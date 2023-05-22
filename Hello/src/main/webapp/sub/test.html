@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <h1>setInterval, setTimeout 함수 사용해 보기</h1>
+    <p>
+        <strong id="min">0</strong>분
+        <strong id="sec">0</strong>초
+    </p>
+    <script>
+        let min1 = 0;
+        let sec1 = 0;
+        // 아래의 setInterval 함수를 이용해서 위의 시간이 진행되도록 해보세요.
+        setInterval(() => {
+            // 초를 1씩 증가 시킨다
+            sec1++
+            if (sec1==60) {
+            // 분을 1 증가시킨다
+            min1++
+            sec1 = 0
+            }
+            document.querySelector("#sec").innerText = sec1
+            document.querySelector("#min").innerText = min1
+        }, 1000);
+
+        // setTimeout, setInterval 함수는 javascript builtin(내장) 함수 이다
+        setTimeout(()=>{
+            console.log("setTimeout 에 전달한 함수가 호출되네?");
+        }, 1000); // delay time (ms)
+        
+        setInterval(()=>{
+            console.log("setInterval 에 전달한 함수가 호출되네?")
+        }, 1000);
+
+    </script>
+</body>
+</html>
