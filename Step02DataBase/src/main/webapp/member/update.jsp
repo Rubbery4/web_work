@@ -3,19 +3,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	// 1. post 방식으로 전송되는 회원의 이름, 주소를 추출한다.
+	// 1. 수정할 회원의 번호를 얻어내서
 		request.setCharacterEncoding("utf-8");
+		int num = Integer.parseInt(request.getParameter("num"));
 		String name = request.getParameter("name");
 		String addr = request.getParameter("addr");
-	// 추가할 회원 정보를 MemberDto 객체에 담는다.
-		MemberDto dto = new MemberDto();
-		dto.setName(name);
-		dto.setAddr(addr);
-	// 2. DB에 저장한다.
+	// 2. DB 에서 수정하고
+		MemberDto dto = new MemberDto(num, name, addr);
 		MemberDao dao = MemberDao.getInstance();
-		boolean isSuccess = dao.insert(dto); // 작업의 성공여부가 리턴된다.
+		boolean isSuccess = dao.update(dto);	
+	// 3. 결과를 응답	
 %>    
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,14 +28,13 @@
 <% 	// 3. 응답한다.
 		if (isSuccess) { %>
 		<p class="alert alert-success">
-		<strong><%=name %> 님의 정보가 저장되었습니다.</strong>
-		<a class="alert-link" href="list.jsp">회원 목록 보기</a>	
+		<strong><%=num %> 번 회원의 정보가 수정 되었습니다.</strong>
+		<a class="alert-link" href="list.jsp">회원 목록</a>	
 		</p>
 	<% 	} else { %>
-		<p class="alert alert-warning">회원정보 저장 실패
-		<a class="alert-link" href="insertform.jsp">다시 작성</a>
+		<p class="alert alert-danger">회원정보 수정 실패
+		<a class="alert-link" href="list.jsp">회원 목록</a>
 		</p>
 	 <%  }%> 
-	</div>
 </body>
 </html>

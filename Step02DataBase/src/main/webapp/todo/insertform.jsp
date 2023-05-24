@@ -14,11 +14,11 @@
 	<form action="insert.jsp" method="post">
 		<div class="mb-1">
 			<label for="work" class="form-label">할일</label>
-			<input type="text" class="form-control" id="work" work="work" placeholder="이름 입력..." />
+			<input type="text" class="form-control" id="work" name="work" placeholder="이름 입력..." />
 		</div>
 		<div class="mb-1">
 			<label for="state" class="form-label">상태</label>
-			<input type="text" class="form-control" id="state" work="state" placeholder="주소 입력..." />
+			<input type="text" class="form-control" id="state" name="state" placeholder="주소 입력..." />
 		</div>
 		<div class="text-end">
 		<button type="submit" class="btn btn-success" >전송</button>

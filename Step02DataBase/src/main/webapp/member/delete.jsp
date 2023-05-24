@@ -13,29 +13,20 @@
 		int num = Integer.parseInt(request.getParameter("num"));
 	// 2. DB 에서 삭제하고
 		MemberDao dao = MemberDao.getInstance();
-		boolean isSuccess = dao.delete(num);	
+		boolean isSuccess = dao.delete(num);
+	/*
+		[리다일렉트 응답]
+		- 클라이언트에게 특정 경로로 요청을 다시 하라고 응답하는 것이다.
+		- 다시 요청할 경로를 전달하면 클라이언트가 해당경로로 요청을 다시 하게 된다.
+		- 따라서 순간적으로 페이지가 이동되게 된다.
+		- HttpServletResponse 객체의 기능을 활용하면 된다.
+		- 요청을 다시할 경로를 전달할때는 반드시 절대경로로 전달하는 것이 좋다
+		- 새로운 경로로 요청을 다시 하라고 강요하는 것도 응답이다.
+	*/
+	// context 경로 얻어내기 (context 경로는 추후에 수정되거나 제거될 예정이기 떄문에 메소드로 얻어낸다.)
+	String cPath = request.getContextPath();
+	// 리다일렉트 응답하기
+	response.sendRedirect(cPath+"/member/list.jsp");
+	
+	
 %>    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
-</head>
-<body>
-	<div class="container">
-		<h1>알림</h1>
-<% 	// 3. 응답한다.
-		if (isSuccess) { %>
-		<p>
-		<strong><%=num %> 님의 정보가 삭제 되었습니다.</strong>
-		<a href="list.jsp">회원 목록</a>	
-		</p>
-	<% 	} else { %>
-		<p>회원정보 삭제 실패
-		<a href="list.jsp">회원 목록</a>
-		</p>
-	 <%  }%> 
-</body>
-</html>

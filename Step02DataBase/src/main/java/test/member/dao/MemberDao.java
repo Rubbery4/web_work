@@ -144,4 +144,82 @@ public class MemberDao {
 		}
 	}
 	
+	public MemberDto getData(int num) {
+			// 회원 목록을 담을 객체 미리 생성하기
+			MemberDto dto=null;
+			// 필요한 객체의 참조값을 담을 지역변수 미리 만들기
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				//DbcpBean 객체를 이용해서 Connection 객체를 얻어온다 (Connection Pool 에서 얻어오기)
+				conn = new DBcpBean().getConn();
+				// 실행할 sql 문 (select)
+				String sql = "select name, addr"
+						+ " from member"
+						+ " where num=?";
+				pstmt = conn.prepareStatement(sql);
+				// sql 문이 미완성이라면 여기서 완성
+				pstmt.setInt(1, num);
+				// select 문 수행하고 결과값 받아오기
+				rs = pstmt.executeQuery();
+				// 반복문 돌면서 ResultSet 에 담긴 애용 추출
+				while(rs.next()) {
+					dto = new MemberDto();
+					dto.setNum(num); // 번호는 지역 변수에 있는 값을 담고
+					// 이름과 주소는 ResultSet 으로 부터 얻어내서 담는다.
+					dto.setName(rs.getString("name"));
+					dto.setAddr(rs.getString("addr"));
+				} 
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if(rs!=null)rs.close();
+					if(pstmt!=null)pstmt.close();
+					if(conn!=null) conn.close();
+				} catch(Exception e) {}
+			}
+			// 회원 한명의 정보가 담긴 MemberDto 객체 리턴해주기
+			return dto;
+	}
+	
+	public boolean update(MemberDto dto) {
+		// 필요한 객체의 참조값을 담을 지역변수 미리 만들기
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int rowCount = 0;
+		try {
+			//DbcpBean 객체를 이용해서 Connection 객체를 얻어온다 (Connection Pool 에서 얻어오기)
+			conn = new DBcpBean().getConn();
+			// 실행할 sql 문 (select)
+			String sql = "update member"
+					+ " set name=?, addr=?"
+					+ " where num=?";
+			pstmt = conn.prepareStatement(sql);
+			// sql 문이 미완성이라면 여기서 완성
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getAddr());
+			pstmt.setInt(3, dto.getNum());
+			// select 문 수행하고 결과값 받아오기
+			rowCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		if (rowCount > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
 }
