@@ -15,19 +15,19 @@
 		<div class="row">
 		<div class="col-sm-6">
 			<label for="writer">작성자</label>
-			<input type="text" id="writer" name="writer"/>
+			<input class="form-control" type="text" id="writer" name="writer"/>
 		</div>
 		<div class="col-sm-6">
 			<label for="pwd">비밀번호</label>
-			<input type="text" id="pwd" name="pwd"/>
+			<input class="form-control" type="password" id="pwd" name="pwd"/>
 		</div>
 		</div>
 		<div>
 			<label for="content">내용</label>
 			<br />
-			<textarea name="content" id="content" cols="25" rows="5"></textarea>
+			<textarea class="form-control" name="content" id="content" cols="25" rows="5"></textarea>
 		</div>
-		<div>
+		<div class="text-end">
 			<button type="submit">등록</button>
 		</div>
 	

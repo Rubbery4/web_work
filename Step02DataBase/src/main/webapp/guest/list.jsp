@@ -23,7 +23,7 @@ List<GuestDto> list = dao.getList();
 	</div>
 	<%for(GuestDto tmp:list) {%>
 	<div>
-		<hr size="1" width="2000"/>
+		<hr class="my-2" size="1" width="2000"/>
 		<p><%=tmp.getWriter() %></p>
 		<div>
 		<p><%=tmp.getContent() %></p>
@@ -34,11 +34,13 @@ List<GuestDto> list = dao.getList();
 		<form action="delete.jsp?num=<%=tmp.getNum() %>&pwd=<%=tmp.getPwd() %>" method="get">
 			<label for="pwd">비밀번호</label>
 			<input class="visually-hidden" type="text" id="num" name="num" value="<%=tmp.getNum() %>" />
-			<input type="text" id="pwd" name="pwd"/>
+			<div class="input-group mb-3">
+			<input type="password" id="pwd" name="pwd"/>
 			<button type="submit">삭제</button>
+			</div>
 		</form>
 		</div>
-		<hr size="1" width="2000"/>
+		<hr class="my-2" size="1" width="2000"/>
 	</div>
 	<%} %>
 	

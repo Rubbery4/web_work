@@ -32,11 +32,11 @@ GuestDto dto=GuestDao.getInstance().getData(num);
 			</div class="mb-1">
 			<div >
 				<label for="content">내용</label>
-				<textarea name="content" id="content" cols="30" rows="10"><%=dto.getContent() %></textarea>
+				<textarea class="form-control" name="content" id="content" cols="30" rows="10"><%=dto.getContent() %></textarea>
 			</div class="mb-3">
 			<div>
 				<label class="form-label" for="pwd">비밀번호</label>
-				<input class="form-control" type="text" id="pwd" name="pwd"/>
+				<input class="form-control" type="password" id="pwd" name="pwd"/>
 			</div class="mb-1">
 			<button class="btn btn-outline-primary" type="submit">수정확인</button>
 			<button class="btn btn-outline-warning" type="reset">취소</button>
