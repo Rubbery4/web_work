@@ -1,4 +1,4 @@
-package test.guest.dao;
+package test.guest.dto;
 
 public class GuestDto {
 	private int num;

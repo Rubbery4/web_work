@@ -1,4 +1,4 @@
-package test.guest.dto;
+package test.guest.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,16 +6,16 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import test.guest.dao.GuestDto;
+import test.guest.dto.GuestDto;
 import test.member.dto.MemberDto;
 import test.util.DBcpBean;
 
 public class GuestDao {
 
 	private static GuestDao dao;
-	
+	// 외부에서 객체 생성하지 못하게
 	private GuestDao() {}
-	
+	// 자신의 참조값을 리턴해주는 메소드
 	public static GuestDao getInstance() {
 		
 		if (dao == null) {
@@ -38,7 +38,7 @@ public class GuestDao {
 			// 실행할 sql 문 (select)
 			String sql = "select num, writer, content, pwd, regdate"
 					+ " from board_guest"
-					+ " order by num asc";
+					+ " order by num desc";
 			pstmt = conn.prepareStatement(sql);
 			// sql 문이 미완성이라면 여기서 완성
 			
@@ -188,7 +188,7 @@ public class GuestDao {
 			conn = new DBcpBean().getConn();
 			// 실행할 sql 문 (select)
 			String sql = "update board_guest"
-					+ " set writer=?, content=?, regdate=sysdate"
+					+ " set writer=?, content=?"
 					+ " where num=? and pwd=?";
 			pstmt = conn.prepareStatement(sql);
 			// sql 문이 미완성이라면 여기서 완성

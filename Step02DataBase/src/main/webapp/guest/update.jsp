@@ -1,5 +1,5 @@
-<%@page import="test.guest.dto.GuestDao"%>
-<%@page import="test.guest.dao.GuestDto"%>
+<%@page import="test.guest.dao.GuestDao"%>
+<%@page import="test.guest.dto.GuestDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -32,7 +32,7 @@ boolean isSuccess = dao.update(dto);
 <% 	// 3. 응답한다.
 		if (isSuccess) { %>
 		<p class="alert alert-success">
-		<strong><%=writer %> 번 회원의 정보가 수정 되었습니다.</strong>
+		<strong><%=writer %> 님의 정보가 수정 되었습니다.</strong>
 		<a class="alert-link" href="list.jsp">회원 목록</a>	
 		</p>
 	<% 	} else { %>

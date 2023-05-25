@@ -1,6 +1,6 @@
 <%@page import="java.util.List"%>
-<%@page import="test.guest.dto.GuestDao"%>
-<%@page import="test.guest.dao.GuestDto"%>
+<%@page import="test.guest.dao.GuestDao"%>
+<%@page import="test.guest.dto.GuestDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -47,7 +47,6 @@ List<GuestDto> list = dao.getList();
 	function formSubmit() {
 	 if(document.querySelector("#pwd").value == "" ) {
 	  alert('비밀번호를 입력하세요.');
-	  event.preventDefault();
 	  return false;
 	 } else {
 		document.f1.submit();	 

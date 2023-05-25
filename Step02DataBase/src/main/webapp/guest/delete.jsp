@@ -1,6 +1,6 @@
-<%@page import="test.guest.dao.GuestDto"%>
+<%@page import="test.guest.dto.GuestDto"%>
 <%@page import="java.util.List"%>
-<%@page import="test.guest.dto.GuestDao"%>
+<%@page import="test.guest.dao.GuestDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
