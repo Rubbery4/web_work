@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
 </head>
 <body>
+<!-- 이 주석은 웹브라우저에게 출력되지만 웹브라우저가 무시하는 주석 -->
+<%--이 주석은 jsp 페이지가 무시하는 주석(웹브라우저에 출력되지 않는다) --%>
 	<div class="container">
 	<h1>방명록 작성</h1>
 	<form action="insert.jsp" method="post">
