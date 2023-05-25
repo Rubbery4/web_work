@@ -3,11 +3,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-request.setCharacterEncoding("utf-8");
-
-int num = Integer.parseInt(request.getParameter("num"));
-
-GuestDto dto=GuestDao.getInstance().getData(num);
+	request.setCharacterEncoding("utf-8");
+	
+	int num = Integer.parseInt(request.getParameter("num"));
+	
+	GuestDto dto=GuestDao.getInstance().getData(num);
 %>
 <!DOCTYPE html>
 <html>
@@ -19,12 +19,14 @@ GuestDto dto=GuestDao.getInstance().getData(num);
 </head>
 <body>
 	<div class="container">
-		<h1>회원 정보 수정 양식</h1>
+		<h1>방명록 수정</h1>
 		<form action="update.jsp" method="post">
 			<div class="mb-1">
 				<input class="visually-hidden" type="text" id="num" name="num" value="<%=dto.getNum() %>" readonly/>
 			</div class="mb-1">
-			<div>
+			<div class="text-end">
+			<a href="list.jsp">글 목록</a>
+			</div>
 			<div>
 				<label class="form-label" for="writer">작성자</label>
 				<input class="form-control" type="text" id="writer" name="writer" value="<%=dto.getWriter() %>"/>

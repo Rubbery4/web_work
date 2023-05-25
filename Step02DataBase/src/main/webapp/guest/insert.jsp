@@ -18,7 +18,7 @@
 		boolean isSuccess = dao.insert(dto); // 작업의 성공여부가 리턴된다.
 		
 		String cPath = request.getContextPath();
-		// 리다일렉트 응답하기
+		// 리다이렉트 응답하기
 		response.sendRedirect(cPath+"/guest/list.jsp");
 		
 %> 

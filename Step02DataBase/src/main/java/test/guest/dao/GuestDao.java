@@ -148,7 +148,7 @@ public class GuestDao {
 			//DbcpBean 객체를 이용해서 Connection 객체를 얻어온다 (Connection Pool 에서 얻어오기)
 			conn = new DBcpBean().getConn();
 			// 실행할 sql 문 (select)
-			String sql = "select writer, content, pwd, regdate"
+			String sql = "select num, writer, content, pwd, regdate"
 					+ " from board_guest"
 					+ " where num=?";
 			pstmt = conn.prepareStatement(sql);
