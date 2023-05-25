@@ -22,8 +22,7 @@ GuestDto dto=GuestDao.getInstance().getData(num);
 		<h1>회원 정보 수정 양식</h1>
 		<form action="update.jsp" method="post">
 			<div class="mb-1">
-				<label class="form-label" for="num">번호</label>
-				<input class="form-control" type="text" id="num" name="num" value="<%=dto.getNum() %>" readonly/>
+				<input class="visually-hidden" type="text" id="num" name="num" value="<%=dto.getNum() %>" readonly/>
 			</div class="mb-1">
 			<div>
 			<div>
@@ -38,9 +37,13 @@ GuestDto dto=GuestDao.getInstance().getData(num);
 				<label class="form-label" for="pwd">비밀번호</label>
 				<input class="form-control" type="password" id="pwd" name="pwd"/>
 			</div class="mb-1">
+			<br />
+			<div class="text-end">
 			<button class="btn btn-outline-primary" type="submit">수정확인</button>
 			<button class="btn btn-outline-warning" type="reset">취소</button>
+			</div>
 		</form>
 	</div>
+	
 </body>
 </html>

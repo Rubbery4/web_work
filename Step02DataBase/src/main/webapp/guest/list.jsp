@@ -31,11 +31,10 @@ List<GuestDto> list = dao.getList();
 		<div>
 		<p><%=tmp.getRegdate() %></p>
 		<a href="updateform.jsp?num=<%=tmp.getNum() %>">수정</a>
-		<form action="delete.jsp?num=<%=tmp.getNum() %>&pwd=<%=tmp.getPwd() %>" method="get">
-			<label for="pwd">비밀번호</label>
+		<form action="delete.jsp?num=<%=tmp.getNum() %>&pwd=<%=tmp.getPwd() %>" method="get" id="f1" onsubmit='formSubmit();'>
 			<input class="visually-hidden" type="text" id="num" name="num" value="<%=tmp.getNum() %>" />
 			<div class="input-group mb-3">
-			<input type="password" id="pwd" name="pwd"/>
+			<input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력하세요."/>
 			<button type="submit">삭제</button>
 			</div>
 		</form>
@@ -43,9 +42,18 @@ List<GuestDto> list = dao.getList();
 		<hr class="my-2" size="1" width="2000"/>
 	</div>
 	<%} %>
-	
-	
-	
 	</div>
+	<script>
+	function formSubmit() {
+	 if(document.querySelector("#pwd").value == "" ) {
+	  alert('비밀번호를 입력하세요.');
+	  event.preventDefault();
+	  return false;
+	 } else {
+		document.f1.submit();	 
+	 }
+	}
+	</script>
+	
 </body>
 </html>

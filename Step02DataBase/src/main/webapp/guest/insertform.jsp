@@ -27,8 +27,9 @@
 			<br />
 			<textarea class="form-control" name="content" id="content" cols="25" rows="5"></textarea>
 		</div>
+		<br />
 		<div class="text-end">
-			<button type="submit">등록</button>
+			<button class="btn btn-outline-secondary" type="submit">등록</button>
 		</div>
 	
 	</form>
