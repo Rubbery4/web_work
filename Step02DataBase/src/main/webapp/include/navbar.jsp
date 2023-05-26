@@ -17,7 +17,7 @@
        		
        %>
        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav me-auto">
               <li class="nav-item">
               <!-- current.equals("member")이 true 면 "active" 문자열이 입력되고 false 면 "" 문자열이 입력 -->
                    <a class="nav-link <%=current.equals("member") ? "active":"" %>" href="${pageContext.request.contextPath}/member/list.jsp">회원목록</a>
@@ -27,6 +27,13 @@
                    <a class="nav-link <%=current.equals("guest") ? "active":"" %>" href="${pageContext.request.contextPath}/guest/list.jsp">방명록</a>
               </li>
             </ul>
+            <form class="d-flex">
+            	<input class="form-control me-2" type="search" placeholder="Search">
+            	<button class="btn btn-info me-2" type="submit">Search</button>
+            </form>
+            <span class="navbar-text">
+            	Made by Rubber
+            </span>
        </div>
 	  </div>
 	</nav>
