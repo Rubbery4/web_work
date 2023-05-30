@@ -8,12 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebServlet("/fortune")
+@WebServlet("/fortune")//3.
 public class FortuneServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//오늘의 운세를 얻어오는 비즈니스 로직을 수행 ( DB에서 읽어왔다고 가정)
-		String fortune= "동쪽으로 가면 귀인을 만나요";
+		String fortune="동쪽으로 가면 귀인을 만나요!";
 		
 		/*
 		 *  HttpServletRequest 객체의 setAttribute( key, value) 메소드를 이용해서 응답에 필요한 
@@ -30,9 +30,9 @@ public class FortuneServlet extends HttpServlet {
 		 *  String a = (String)request.getAttribute("fortuneToday");
 		 */
 		req.setAttribute("fortuneToday", fortune);
-		
+
 		// 응답을 여기서 하지 않고 jsp 페이지로 응답을 위임
-		RequestDispatcher rd= req.getRequestDispatcher("/test/fortune.jsp");
+		RequestDispatcher rd=req.getRequestDispatcher("/test/fortune.jsp");
 		/*
 		 *  webapp/test/fortune.jsp 페이지에게 응답을 대신하도록 하고
 		 *  서블릿에 전달받았던 HttpServletRequest, HttpServletRespons 객체의 참조값을 전달해 준다.

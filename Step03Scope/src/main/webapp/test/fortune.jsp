@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%
 	// request 영역에 fortuneToday 라는 키값으로 담긴 String type 데이터를 읽어와서 casting
-	String fortune = (String)request.getAttribute("fortuneToday");
+	String fortune=(String)request.getAttribute("fortuneToday");
 %>
 
 <!DOCTYPE html>
