@@ -18,9 +18,9 @@
 			resolve 함수가 호출되면 .then() 안에 있는 함수가 자동 호출된다.
 			reject 함수가 호출되면 .catch() 안에 있는 함수가 자동 호출된다.
 			*/
-			//resolve();
-			reject();
-			console.log("reject 함수를 호출 했습니다.");
+			resolve();
+			// reject();
+			console.log("resolve 함수를 호출 했습니다.");
 		});
 		// 2. p1 Promise 가 resolve 되었을때 호출되는 함수 등록
 		p1.then(function(){

@@ -3,8 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	//요청 인코딩 설정
-	request.setCharacterEncoding("utf-8");
 	// 1. 폼 전송되는 회원 가입정보를 읽어와서
 	String id = request.getParameter("id");
 	String pwd = request.getParameter("pwd");
@@ -33,7 +31,7 @@
 		<%if(isSuccess) {%>
 			<p>
 				<strong><%=id %></strong>님 가입 되었습니다.
-				<a href="Loginform.jsp">로그인 하러 가기</a>
+				<a href="loginform.jsp">로그인 하러 가기</a>
 			</p>
 		<%} else {%>
 			<p>

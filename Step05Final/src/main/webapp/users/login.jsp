@@ -4,10 +4,9 @@
     pageEncoding="UTF-8"%>
 <%
 	// 1. 폼 전송되는 id, pwd 를 읽어와서
-	request.setCharacterEncoding("utf-8");
-	// 2. UsersDto 에 담아서
 	String id = request.getParameter("id");
 	String pwd = request.getParameter("pwd");
+	// 2. UsersDto 에 담아서
 	UsersDto dto = new UsersDto();
 	dto.setId(id);
 	dto.setPwd(pwd);
@@ -45,7 +44,7 @@
 		<%} else {%>
 			<p class="alert alert-danger">
 				아이디 혹인 비밀번호가 틀려요
-				<a href="${pageContext.request.contextPath}/users/Loginform.jsp">다시시도</a>
+				<a href="${pageContext.request.contextPath}/users/loginform.jsp">다시시도</a>
 			</p>
 		<%} %>
 	</div>
