@@ -13,8 +13,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-@WebFilter("/private/*")
+// urlPatterns = String[] 
+@WebFilter(urlPatterns = {"/private/*", "/file/private/*"})
 public class LoginFilter implements Filter{
 
 	@Override
