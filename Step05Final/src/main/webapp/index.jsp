@@ -16,10 +16,10 @@
 </head>
 <body>
 	<div class="container">
-		<%if(id!= null) { %>
+		<%if(id != null){ %>
 			<p>
-				<strong><%=id %></strong> 님 로그인중...
-				<a href="${pageContext.request.contextPath}/users/logout.jsp">로그아웃</a>
+				<a href="${pageContext.request.contextPath }/users/private/info.jsp"><%=id %></a> 님 로그인중...
+				<a href="${pageContext.request.contextPath }/users/logout.jsp">로그아웃</a>
 			</p>
 		<%} %>
 		<h1>인덱스 페이지 입니다</h1>

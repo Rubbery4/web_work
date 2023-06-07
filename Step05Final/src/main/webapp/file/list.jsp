@@ -6,6 +6,8 @@
 <%
 FileDao dao = FileDao.getInstance();
 List<FileDto> list = dao.getList();
+// 로그인된 아이디( 로그인이 되어있지 않으면 null)
+String id = (String)session.getAttribute("id");
 %>
 <!DOCTYPE html>
 <html>
@@ -17,6 +19,8 @@ List<FileDto> list = dao.getList();
 <body>
 	<div class="container">
 		<a href="${pageContext.request.contextPath}/file/private/upload_form.jsp">업로드 하기</a>
+		<br />
+		<a href="${pageContext.request.contextPath}/file/private/upload_form2.jsp">ajax 업로드 하기</a>
 		<h1>자료실 목록입니다.</h1>
 		<table>
 			<thead>
@@ -26,6 +30,7 @@ List<FileDto> list = dao.getList();
 					<th>제목</th>
 					<th>파일명</th>
 					<th>등록일</th>
+					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,6 +43,14 @@ List<FileDto> list = dao.getList();
 					<a href="download.jsp?num=<%=tmp.getNum() %>"><%=tmp.getOrgFileName() %></a>
 					</td>
 					<td><%=tmp.getRegdate() %></td>
+					
+					<td>
+						<%-- 글 작성자와 로그인된 아이디와 같을때만 삭제 링크 출력하기 --%>
+						<%if(tmp.getWriter().equals(id)) { %>
+							<a href="delete.jsp?num=<%=tmp.getNum()%>">삭제</a>
+						<%} %>
+					</td>
+
 				</tr>
 				<%} %>
 			</tbody>
