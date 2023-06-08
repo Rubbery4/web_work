@@ -4,10 +4,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+
+int num = Integer.parseInt(request.getParameter("pageNum"));
+
 FileDao dao = FileDao.getInstance();
-List<FileDto> list = dao.getList();
+List<FileDto> list2 = dao.getList2(num);
 // 로그인된 아이디( 로그인이 되어있지 않으면 null)
 String id = (String)session.getAttribute("id");
+
+
 %>
 <!DOCTYPE html>
 <html>
@@ -35,7 +40,7 @@ String id = (String)session.getAttribute("id");
 				</tr>
 			</thead>
 			<tbody>
-			<%for(FileDto tmp:list) { %>
+			<%for(FileDto tmp:list2) { %>
 				<tr>
 					<td><%=tmp.getNum() %></td>
 					<td><%=tmp.getWriter() %></td>
@@ -58,7 +63,7 @@ String id = (String)session.getAttribute("id");
 		<ul class="pagination">
 			<%for(int i=1; i<=10; i++) { %>
 				<li class="page-item">
-					<a class="page-link" href="list.jsp?pageNum=<%=i %>"><%=i %></a>
+					<a class="page-link" href="list2.jsp?pageNum=<%=i %>"><%=i %></a>
 				</li>
 			<%} %>
 		</ul>

@@ -22,6 +22,8 @@ public class FileDao {
 		return dao;
 	}
 	
+	
+	
 	public boolean delete(int num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -101,9 +103,61 @@ public class FileDao {
 		return dto;
 	}
 	
+	// 파일 목록을 출력하는 메소드
+	
+	public List<FileDto> getList2(int num) {
+		List<FileDto> list = new ArrayList<>();
+		// 필요한 객체의 참조값을 담을 지역변수 미리 만들기
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			//DbcpBean 객체를 이용해서 Connection 객체를 얻어온다 (Connection Pool 에서 얻어오기)
+			conn = new DBcpBean().getConn();
+			// 실행할 sql 문 (select)
+			String sql = "select *"
+					+ " from"
+					+ " (select result1.*, rownum as rnum"
+					+ " from"
+					+ " (select num, writer, title, orgFileName, saveFileName, fileSize, regdate"
+					+ " from board_file"
+					+ " order by num desc) result1)"
+					+ " where rnum between ? and ?";
+			pstmt = conn.prepareStatement(sql);
+			// sql 문이 미완성이라면 여기서 완성
+			pstmt.setInt(1, (num*10)-9);
+			pstmt.setInt(2, num*10);
+			// select 문 수행하고 결과값 받아오기
+			rs = pstmt.executeQuery();
+			// 반복문 돌면서 ResultSet 에 담긴 애용 추출
+			while (rs.next()) {
+				FileDto dto = new FileDto();
+				dto.setNum(rs.getInt("num"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setTitle(rs.getString("title"));
+				dto.setOrgFileName(rs.getString("orgFileName"));
+				dto.setSaveFileName(rs.getString("saveFileName"));
+				dto.setFileSize(rs.getLong("fileSize"));
+				dto.setRegdate(rs.getString("regdate"));
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return list;
+	}
 	
 	public List<FileDto> getList() {
-		// 회원 목록을 담을 객체 미리 생성하기
 		List<FileDto> list = new ArrayList<>();
 		// 필요한 객체의 참조값을 담을 지역변수 미리 만들기
 		Connection conn = null;

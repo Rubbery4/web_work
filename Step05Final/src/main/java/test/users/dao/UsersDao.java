@@ -20,6 +20,44 @@ public class UsersDao {
 		}
 		return dao;
 	}
+
+	
+	// 개인정보 수정하는 메소드
+	public boolean update(UsersDto dto) {
+		// 필요한 객체의 참조값을 담을 지역변수 미리 만들기
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int rowCount = 0;
+		try {
+			//DbcpBean 객체를 이용해서 Connection 객체를 얻어온다 (Connection Pool 에서 얻어오기)
+			conn = new DBcpBean().getConn();
+			// 실행할 sql 문 (select)
+			String sql = "update users"
+					+ " set email=?, profile=?"
+					+ " where id=?";
+			pstmt = conn.prepareStatement(sql);
+			// sql 문이 미완성이라면 여기서 완성
+			pstmt.setString(1, dto.getEmail());
+			pstmt.setString(2, dto.getProfile());
+			pstmt.setString(3, dto.getId());
+			// select 문 수행하고 결과값 받아오기
+			rowCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null) conn.close();
+			} catch(Exception e) {}
+		}
+		if (rowCount>0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+		
+	
 	
 	public boolean updatePwd(UsersDto dto) {
 		// 필요한 객체의 참조값을 담을 지역변수 미리 만들기
