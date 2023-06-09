@@ -31,6 +31,7 @@
 			<li><a href="file/list.jsp">자료실</a></li>
 			<li><a href="file/list2.jsp?pageNum=1">자료실2</a></li>
 			<li><a href="test/signup_form.jsp">form 테스트</a></li>
+			<li><a href="cafe/list.jsp">글 목록보기</a></li>
 		</ul>
 	</div>
 </body>

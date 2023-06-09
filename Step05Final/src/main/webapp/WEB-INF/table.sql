@@ -19,3 +19,20 @@ CREATE TABLE board_file(
 );
 
 CREATE SEQUENCE board_file_seq;
+
+
+-- 게시글을 저장할 테이블
+create table board_cafe(
+	num NUMBER PRIMARY KEY,
+	writer VARCHAR2(100) not null,
+	title VARCHAR2(100) not null,
+	content CLOB,
+	viewCount NUMBER,
+	regdate date
+);
+
+-- 게시글의 번호를 얻어낼 시퀀스
+create sequence board_cafe_seq;
+
+
+
