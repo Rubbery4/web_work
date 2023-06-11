@@ -198,7 +198,7 @@ public class CafeDao {
 			conn = new DBcpBean().getConn();
 			// 실행할 sql 문 (select)
 			String sql = "update board_cafe"
-					+ " set title=?, context=?"
+					+ " set title=?, content=?"
 					+ " where writer=?";
 			pstmt = conn.prepareStatement(sql);
 			// sql 문이 미완성이라면 여기서 완성

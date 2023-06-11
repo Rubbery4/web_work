@@ -4,6 +4,7 @@
     pageEncoding="UTF-8"%>
     
 <%
+String id = (String)session.getAttribute("id");
 int num = Integer.parseInt(request.getParameter("num"));
 CafeDto dto = CafeDao.getInstance().getData(num);
 %>
@@ -18,6 +19,13 @@ CafeDto dto = CafeDao.getInstance().getData(num);
 	<div class="container">
 		<h1>게시글 목록 입니다</h1>
 		<a href="list.jsp">글 목록</a>
+		<%-- 글 작성자와 로그인된 아이디와 같을때만 수정 링크 출력하기 --%>
+		<%if(dto.getWriter().equals(id)) { %>
+			<a href="private/updateform.jsp?num=<%=dto.getNum()%>">수정</a>
+		<%} %>
+		<%if(dto.getWriter().equals(id)) { %>
+			<a href="private/delete.jsp?num=<%=dto.getNum()%>">삭제</a>
+		<%} %>
 		<table>
 			<tr>
 				<th>글번호</th>
