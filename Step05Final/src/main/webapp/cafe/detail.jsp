@@ -21,13 +21,6 @@ CafeDao.getInstance().addViewCount(num);
 	<div class="container">
 		<h1>글 상세 보기</h1>
 		<a href="list.jsp">글 목록</a>
-		<%-- 글 작성자와 로그인된 아이디와 같을때만 링크 출력하기 --%>
-		<%if(dto.getWriter().equals(id)) { %>
-			<a href="private/updateform.jsp?num=<%=dto.getNum()%>">수정</a>
-		<%} %>
-		<%if(dto.getWriter().equals(id)) { %>
-			<a href="private/delete.jsp?num=<%=dto.getNum()%>">삭제</a>
-		<%} %>
 		<table class="table table-bordered">
 			<tr>
 				<th>글번호</th>
