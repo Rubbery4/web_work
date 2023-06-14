@@ -58,18 +58,22 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
 </head>
 <body>
+	<jsp:include page="/include/navbar.jsp">
+		<jsp:param value="file" name="current"/>
+	</jsp:include>
 	<div class="container">
 		<a href="${pageContext.request.contextPath}/file/private/upload_form.jsp">업로드 하기</a>
 		<br />
 		<a href="${pageContext.request.contextPath}/file/private/upload_form2.jsp">ajax 업로드 하기</a>
 		<h1>자료실 목록입니다.</h1>
-		<table>
-			<thead>
+		<table class="table table-striped">
+			<thead class="table-dark">
 				<tr>
 					<th>번호</th>
 					<th>작성자</th>
 					<th>제목</th>
 					<th>파일명</th>
+					<<th>파일크기</th>
 					<th>등록일</th>
 					<th>삭제</th>
 				</tr>
@@ -83,6 +87,7 @@
 					<td>
 					<a href="download.jsp?num=<%=tmp.getNum() %>"><%=tmp.getOrgFileName() %></a>
 					</td>
+					<td><%=tmp.getFileSize() %>byte</td>
 					<td><%=tmp.getRegdate() %></td>
 					
 					<td>

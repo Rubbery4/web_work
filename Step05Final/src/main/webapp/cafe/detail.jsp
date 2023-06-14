@@ -19,6 +19,13 @@ CafeDao.getInstance().addViewCount(num);
 </head>
 <body>
 	<div class="container">
+		<nav>
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="../index.jsp">Home</a></li>
+		    <li class="breadcrumb-item"><a href="list.jsp">Cafe</a></li>
+		    <li class="breadcrumb-item active" >Detail</li>
+		  </ol>
+		</nav>
 		<h1>글 상세 보기</h1>
 		<a href="list.jsp">글 목록</a>
 		<table class="table table-bordered">
