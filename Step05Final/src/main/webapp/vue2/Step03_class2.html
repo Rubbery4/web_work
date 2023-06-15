@@ -9,7 +9,7 @@
 	<h1>vue js 로 클래스 속성의 값 제어하기</h1>
 	<div id="app">
 		<button class="btn btn-primary btn-lg">버튼</button>
-		<button class="btn" v-bind:class="{'btn-primary':isPrimary, 'btn-lg':isLg}">Vue 버튼</button>
+		<button class="btn" v-bind:class="obj">Vue 버튼</button>
 		<br />
 		<label>
 			파란색버튼 <input type="checkbox" v-model="isPrimary" />
@@ -27,6 +27,13 @@
 			data:{
 				isPrimary:false,
 				isLg:false
+			},
+			// 종속된 모델이 바뀌면 다시 호출되어서 연산된(computed) 값을 리턴하는 함수
+			computed:{
+				obj(){
+					
+					return {'btn-primary':this.isPrimary, 'btn-lg':this.isLg}
+				}
 			}
 		});
 	</script>
