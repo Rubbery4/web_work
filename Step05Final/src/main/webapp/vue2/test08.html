@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="app">
+        <fortune-component v-bind:msg="fortune"></fortune-component>
+        <input type="text" v-model="fortune" placeholder="오늘의 운세를 입력하세요...">
+    </div>
+   	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+     <script>
+        Vue.component("fortune-component",{
+            template:`
+                <div>
+                    <h2>오늘의 운세</h2>
+                    <p>{{msg}}</p>   
+                </div> 
+            `,
+            props:["msg"]
+        });
+
+        let app=new Vue({
+            el:"#app",
+            data(){
+                return {
+                    fortune:"북쪽으로 가면 현진이를 만나게 될꺼에요!"
+                };
+            }
+        });
+        </script>
+</body>
+</html>

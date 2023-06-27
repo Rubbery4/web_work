@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="app">
+        <h1>component 불러오기 예제</h1>
+        <test-component></test-component>
+        <test-component></test-component>
+    </div>
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script>
+        let app=new Vue({
+            el:"#app",
+            data:{
+               
+            },
+            components:{
+                "test-component":{
+                    template:"<div class='box'> box </div>"
+                }
+            }
+        });
+    </script>    
+</body>
+</html>

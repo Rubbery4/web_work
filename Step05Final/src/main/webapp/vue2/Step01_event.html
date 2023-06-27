@@ -12,17 +12,20 @@
 	 -->
 	<button v-on:click="clicked">누르기</button>
 	<p>{{msg}}</p>
+	<p>{{name}}</p>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script>
 		new Vue({
 			el:"#app", //id 가 app 인 요소 안에서 일어나는 일을 vue js 로 처리 및 관리를 하겠다는 의미
 			data:{
-				msg:""
+				msg:"",
+				name:""
 			},
 			methods:{
 				clicked:function(){
 					this.msg="버튼을 눌렀네요?";
+					this.name="이름입니다"
 				}
 			}
 		});

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="app">
+	     
+	<input type="checkbox" v-model="isChecked">
+	<p v-if="isChecked">p1</p>
+	       
+	</div>
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script>
+        let app=new Vue({
+            el:"#app",
+            data:{
+                isChecked:true,
+            }
+        });
+   </script>
+</body>
+</html>
