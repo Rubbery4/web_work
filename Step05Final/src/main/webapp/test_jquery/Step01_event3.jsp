@@ -18,7 +18,14 @@
 	</ul>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
 	<script>
-		$("#inputMsg").on("input", function(e){
+		$("#inputMsg").on("keyup", function(e){
+			
+			// 만약 Enter 키를 눌렀다면
+			if(e.keyCode==13) {
+				const msg=$("#inputMsg").val();
+				$("<li>").text(msg).appendTo("#msgList");
+				$("#inputMsg").val("").focus();
+			}
 			const msg = $(e.target).val();
 			// p 요소에 출력
 			$("#current").text(msg);
@@ -29,6 +36,8 @@
 			const msg=$("#inputMsg").val();
 			// 2. li 요소를 만들어서 innerText 에 출력하고 id가 msgList 인 요소에 추가하기
 			$("<li>").text(msg).appendTo("#msgList");
+			// value 에 빈 문자열을 넣어주면 입력한 내용이 삭제되는 효과를 낸다.
+			$("#inputMsg").val("").focus();
 		});
 	</script>
 </body>
