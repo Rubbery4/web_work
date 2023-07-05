@@ -32,7 +32,7 @@
 	   format:"Y.m.d"
    })
    $("#three").datetimepicker({
-	   timepicker:false,
+	   datepicker:false,
 	   format:"H:i"
    })
    </script>
